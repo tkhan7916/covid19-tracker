@@ -10,16 +10,16 @@ const Chart = ({data: {confirmed, recovered, deaths}, country}) => {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            setDailyData(await fetchDailyData());
+            setDailyData(await fetchDailyData(country));
         }
 
         fetchAPI();
-    }, []);
+    }, [country]);
 
     const lineChart = (
         dailyData.length
         ? (
-        <Line 
+        <Line className={styles.line}
           data={{
               labels: dailyData.map(({date}) => new Date(date).toLocaleDateString()),
               datasets: [{
@@ -41,13 +41,16 @@ const Chart = ({data: {confirmed, recovered, deaths}, country}) => {
                   fill: true,
               }],
           }}
+          options={{
+            title: {display: true, text: `Timeline`},
+          }}
         />) : null
     );
 
     const barChart = (
         confirmed
         ? (
-            <Bar 
+            <Bar className={styles.bar}
               data={{
                   labels: ['Infected', 'Recovered', 'Deaths'],
                   datasets: [{
@@ -58,7 +61,7 @@ const Chart = ({data: {confirmed, recovered, deaths}, country}) => {
               }}
               options={{
                   legend: {display: false},
-                  title: {display: true, text: `Current state in ${country}`},
+                  title: {display: true, text: `Current totals`},
               }}
             />
         ) : null
@@ -66,7 +69,8 @@ const Chart = ({data: {confirmed, recovered, deaths}, country}) => {
 
     return (
         <div className={styles.container}>
-            {country ? barChart : lineChart}
+            {lineChart}
+            {country ? barChart : null}
         </div>
     )
 }
