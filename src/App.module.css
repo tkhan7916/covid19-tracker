@@ -1,5 +1,5 @@
 body {
-    background-color: whitesmoke;
+    background-color: snow;
 }
 
 .container {
@@ -10,7 +10,7 @@ body {
 }
 
 .image {
-    width: 370px;
+    width: 400px;
     margin-top: 50px;
 }
 
