@@ -4,17 +4,17 @@ import {Line, Bar} from 'react-chartjs-2';
 
 import styles from './Chart.module.css';
 
-const Chart = ({data: {confirmed, recovered, deaths}, country}) => {
+const Chart = ({data: {confirmed, recovered, deaths}, code}) => {
     const [dailyData_o, setDailyData] = useState([]);
     const dailyData = dailyData_o.slice(0).reverse();
 
     useEffect(() => {
         const fetchAPI = async () => {
-            setDailyData(await fetchDailyData(country));
+            setDailyData(await fetchDailyData(code));
         }
 
         fetchAPI();
-    }, [country]);
+    }, [code]);
 
     const lineChart = (
         dailyData.length
@@ -70,7 +70,7 @@ const Chart = ({data: {confirmed, recovered, deaths}, country}) => {
     return (
         <div className={styles.container}>
             {lineChart}
-            {country ? barChart : null}
+            {code ? barChart : null}
         </div>
     )
 }

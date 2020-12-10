@@ -3,7 +3,7 @@
     justify-content: center;
     flex-direction: column;
     margin-bottom: 5%;
-    width: 85%;
+    width: 65%;
 }
 
 @media (max-width: 770px) {
