@@ -4,8 +4,6 @@ Link: https://covid19-globaltracker.firebaseapp.com/
 
 ![Global page](src/images/cvt_1.png)
 
-![Country page](src/images/cvt_2.png)
-
 ## Description
 
 This is a web app that tracks daily statistics of the COVID-19 Pandemic. Data is displayed for individual countries as well as the world in total.
